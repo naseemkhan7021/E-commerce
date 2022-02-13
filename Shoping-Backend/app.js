@@ -12,6 +12,7 @@ const errorMiddleware = require('./middlewares/errors/errors');
 // setting up config files 
 // if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
 // require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+require('dotenv').config();
 
 
 app.use(express.json({ limit: "50mb" }));
