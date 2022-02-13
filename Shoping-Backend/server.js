@@ -10,7 +10,7 @@ process.on('uncaughtException', err => {
 });
 // setting up config files 
 // require('dotenv').config();
-require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+// require('dotenv').config({ path: 'shoping-backend/config/config.env' });
 const PORT = process.env.PORT;
 
 // Database conection

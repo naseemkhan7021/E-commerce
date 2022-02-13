@@ -3,6 +3,7 @@ const app = express();
 
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
@@ -11,7 +12,7 @@ const errorMiddleware = require('./middlewares/errors/errors');
 
 // setting up config files 
 // if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
-require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+dotenv.config({ path: 'Shoping-Backend/config/config.env' });
 // require('dotenv').config();
 
 
