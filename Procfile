@@ -1,1 +1,1 @@
-web: node shoping-backend/server.js
+web: node Shoping-Backend/server.js
