@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -45,7 +45,7 @@ const Editeuser = () => {
                });
                navigate('/admin/users')
           }
-     }, [dispatch, alert, error, u_id, user, success, updateError])
+     }, [dispatch, alert, error, u_id, user, success, navigate, updateError])
 
      const submitForm = (e) => {
           e.preventDefault();

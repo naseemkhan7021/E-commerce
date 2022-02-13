@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
@@ -81,25 +81,27 @@ const EditeProduct = () => {
                          }
                          reader.readAsDataURL(image);
                     });
-
+                    break;
                case 'name':
                     setName(e.target.value);
-                    break
+                    break;
                case 'price':
                     setPrice(e.target.value);
-                    break
+                    break;
                case 'description':
                     setDescription(e.target.value);
-                    break
+                    break;
                case 'category':
                     setCategory(e.target.value);
-                    break
+                    break;
                case 'seller':
                     setSeller(e.target.value);
-                    break
+                    break;
                case 'stock':
                     setStock(e.target.value);
-                    break
+                    break;
+               default:
+                    break;
           }
      }
 

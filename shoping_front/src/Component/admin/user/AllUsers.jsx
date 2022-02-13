@@ -1,4 +1,3 @@
-import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +9,7 @@ import { deleteuserAction, showAlluserAction } from '../../../redux/action/admin
 import { ADMIN_DELETE_USER_RESET } from '../../../constants/user_Ctn';
 
 const Allusers = () => {
-     const { loading, error, users, totalusersCount } = useSelector(state => state.allusers)
+     const { loading, error, users } = useSelector(state => state.allusers)
      const { loading: deleteLoading, error: deleteError, success } = useSelector(state => state.udUser)
      const alert = useAlert();
      const dispatch = useDispatch()
@@ -31,7 +30,7 @@ const Allusers = () => {
                     type: ADMIN_DELETE_USER_RESET
                })
           }
-     }, [dispatch, alert, error, success])
+     }, [dispatch, alert, error, success, deleteError])
 
      const setUsersData = () => {
           const data = {

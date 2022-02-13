@@ -1,4 +1,3 @@
-import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +10,7 @@ import { DELETE_PRODUCT_RESET } from '../../../constants/product_Ctn';
 
 const Allproducts = () => {
 
-     const { loading, error, products, totalProducts, outOfStockProducts } = useSelector(state => state.products)
+     const { loading, error, products } = useSelector(state => state.products)
      const { loading: deleteLoading, error: deleteError, success: isDeleted } = useSelector(state => state.deleteProduct)
      const alert = useAlert();
      const dispatch = useDispatch()

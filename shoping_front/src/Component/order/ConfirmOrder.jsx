@@ -1,5 +1,4 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { CURRENCY, env_shippingPrice, env_texParcent } from '../../constants/variable';
 import Loader from '../Layout/Share/Loader';
@@ -9,8 +8,8 @@ import Checkoutsteps from './CheckoutSteps';
 const Confirmorder = () => {
      const { cardItems, shippingInfo } = useSelector(state => state.card)
      const navigat = useNavigate()
-     const { loading, error, isAuthenticated, user } = useSelector(state => state.auth)
-     const dispatch = useDispatch();
+     const { loading, user } = useSelector(state => state.auth)
+     // const dispatch = useDispatch();
 
      // calculat order price 
      const itemsPrice = cardItems.reduce((acc, value) => (acc + (value.price * value.quantity)), 0)

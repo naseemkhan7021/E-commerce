@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useEffect } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +20,7 @@ const Createproduct = () => {
      const alert = useAlert();
      const navigat = useNavigate();
      const dispatch = useDispatch();
-     const { loading, error, products, success } = useSelector(state => state.creatNewProduct);
+     const { loading, error, success } = useSelector(state => state.creatNewProduct);
 
 
      useEffect(() => {
@@ -33,10 +33,10 @@ const Createproduct = () => {
           }
           if (error) {
                alert.error(error)
-               dispatch(clearErrors())
+               dispatch(clearErrors());
           }
 
-     }, [dispatch, alert, error, success])
+     }, [dispatch, alert, error, success, navigate])
 
      const onInputChange = name => e => {
           switch (name) {
@@ -57,25 +57,28 @@ const Createproduct = () => {
                          }
                          reader.readAsDataURL(image);
                     });
+                    break;
 
                case 'name':
                     setName(e.target.value);
-                    break
+                    break;
                case 'price':
                     setPrice(e.target.value);
-                    break
+                    break;
                case 'description':
                     setDescription(e.target.value);
-                    break
+                    break;
                case 'category':
                     setCategory(e.target.value);
-                    break
+                    break;
                case 'seller':
                     setSeller(e.target.value);
-                    break
+                    break;
                case 'stock':
                     setStock(e.target.value);
-                    break
+                    break;
+               default:
+                    break;
           }
      }
 

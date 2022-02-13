@@ -1,4 +1,3 @@
-import React from 'react';
 import { MDBDataTable } from 'mdbreact';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +11,7 @@ import { ADMIN_DELETE_ORDER_RESET } from '../../../constants/order_Ctn';
 
 const AllOrders = () => {
 
-     const { loading, error, orders, totalOrders, totalAmount } = useSelector(state => state.allOrders)
+     const { loading, error, orders } = useSelector(state => state.allOrders)
      const { loading: deleteLoading, error: deleteError, isUpdated } = useSelector(state => state.order)
      const alert = useAlert();
      const dispatch = useDispatch()
@@ -77,7 +76,7 @@ const AllOrders = () => {
                     p_id: order._id,
                     numOfItems: order.orderItems.length,
                     amount: `${CURRENCY}${order.totalPrice}`,
-                    status: <p className={`text-capitalize ${order.orderStatus == 'processing' ? 'redColor' : order.orderStatus == 'Shipped' ? 'orange' : 'greenColor'}`}>{order.orderStatus}</p>,
+                    status: <p className={`text-capitalize ${order.orderStatus === 'processing' ? 'redColor' : order.orderStatus === 'Shipped' ? 'orange' : 'greenColor'}`}>{order.orderStatus}</p>,
                     actions: <div className=''>
                          <Link to={`/admin/order/${order._id}`} className='btn btn-primary py-1 px-2'>
                               <i className='fa fa-eye'></i>

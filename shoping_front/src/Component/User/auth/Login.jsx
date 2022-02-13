@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -24,7 +24,7 @@ const Login = () => {
                alert.error(error)
                dispatch(clearErrors())
           }
-     }, [dispatch, alert, error, isAuthenticated]);
+     }, [dispatch, alert, error, isAuthenticated, navigat]);
 
      function submitLoginForm(e) {
           e.preventDefault();

@@ -1,16 +1,14 @@
-import React from 'react';
-import { useAlert } from 'react-alert';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useAlert } from 'react-alert';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadUserAction } from '../../../redux/action/userAction';
 import Loader from '../../Layout/Share/Loader';
 import Metadata from '../../Layout/Share/MetaData';
 
 const Profile = () => {
 
-     const { loading, isAuthenticated, user } = useSelector(state => state.auth);
-     const dispatch = useDispatch()
-     const alert = useAlert();
+     const { loading, user } = useSelector(state => state.auth);
+     // const dispatch = useDispatch()
+     // const alert = useAlert();
 
      // dispatch(loadUserAction())
      // console.log('loading -> ', loading, ' isAuthenticated -> ', isAuthenticated);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { countries } from 'countries-list';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';

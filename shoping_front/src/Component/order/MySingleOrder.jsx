@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
@@ -61,7 +61,7 @@ const Mysingleorder = () => {
                                                             <p><b>Id:</b> #{order.paymentInfo && order.paymentInfo.id}</p>
 
                                                             <h4 className="mb-2">Order Status:</h4>
-                                                            <p className={order.orderStatus == 'processing' ? 'redColor' : order.orderStatus == 'Shipped' ? 'orange' : 'greenColor'} ><b className='text-capitalize'>{order.orderStatus}</b>
+                                                            <p className={order.orderStatus === 'processing' ? 'redColor' : order.orderStatus === 'Shipped' ? 'orange' : 'greenColor'} ><b className='text-capitalize'>{order.orderStatus}</b>
                                                             </p>
 
                                                        </div>

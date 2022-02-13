@@ -7,7 +7,7 @@ import Search from './Share/Search';
 
 const Header = () => {
 
-     const { loading, error, user, isAuthenticated } = useSelector(state => state.auth);
+     const { loading, user } = useSelector(state => state.auth);
      const { cardItems } = useSelector(state => state.card);
      const dispatch = useDispatch();
      const alert = useAlert();
@@ -22,7 +22,7 @@ const Header = () => {
                <nav className="navbar row">
                     <div className="col-12 col-md-3">
                          <div className="navbar-brand">
-                              <Link to="/"><img style={{ maxWidth: '100%', height: '3rem' }} src="/images/logo.png" /></Link>
+                              <Link to="/"><img style={{ maxWidth: '100%', height: '3rem' }} alt='shoping commerce' src="/images/logo.png" /></Link>
                          </div>
                     </div>
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
@@ -33,7 +32,7 @@ const Register = () => {
                alert.error(error)
                dispatch(clearErrors())
           }
-     }, [dispatch, alert, error, isAuthenticated]);
+     }, [dispatch, alert, error, isAuthenticated, navigat]);
 
      const hendleChange = e => {
           if (e.target.name === 'avtar') {
@@ -114,7 +113,7 @@ const Register = () => {
                                                   <img
                                                        src={avtarPreview}
                                                        className='rounded-circle'
-                                                       alt='image'
+                                                       alt={name}
                                                   />
                                              </figure>
                                         </div>

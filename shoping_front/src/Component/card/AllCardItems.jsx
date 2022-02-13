@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Metadata from '../Layout/Share/MetaData';
 import { CURRENCY } from '../../constants/variable';

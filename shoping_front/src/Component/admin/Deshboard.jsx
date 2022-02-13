@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,9 +12,9 @@ import Metadata from '../Layout/Share/MetaData';
 
 const Dashboard = () => {
 
-     const { loading: productLoading, error, products, totalProducts, outOfStockProducts } = useSelector(state => state.products)
-     const { loading: orderLoading, error: orderError, orders, totalOrders, totalAmount } = useSelector(state => state.allOrders)
-     const { loading: userLoading, error: userError, users, totalusersCount } = useSelector(state => state.allusers)
+     const { loading: productLoading, error, totalProducts, outOfStockProducts } = useSelector(state => state.products)
+     const { loading: orderLoading, error: orderError, totalOrders, totalAmount } = useSelector(state => state.allOrders)
+     const { loading: userLoading, error: userError, totalusersCount } = useSelector(state => state.allusers)
      const alert = useAlert();
      const dispatch = useDispatch()
 

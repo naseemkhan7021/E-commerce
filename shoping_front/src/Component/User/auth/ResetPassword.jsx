@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -25,7 +25,7 @@ const Resetpassword = () => {
                navigat('/auth/login')
                alert.success("Password updated successfully !!!")
           }
-     }, [dispatch, alert, error, success]);
+     }, [dispatch, alert, error, success, navigat]);
 
      const submitForm = e => {
           e.preventDefault();

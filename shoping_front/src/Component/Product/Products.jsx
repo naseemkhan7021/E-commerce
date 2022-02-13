@@ -9,6 +9,7 @@ const Product = ({ product }) => {
                          <img
                               className="imgContain card-img-top mx-auto"
                               src={product.images[0].url}
+                              alt={product && product.name}
                          />
                     </Link>
                     <div className="card-body d-flex flex-column">

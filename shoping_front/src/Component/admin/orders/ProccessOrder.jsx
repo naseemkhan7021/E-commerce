@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
@@ -83,7 +83,7 @@ const Proccessorder = () => {
 
 
                                    <h4 className="my-4">Order Status:</h4>
-                                   <p className={order.orderStatus == 'processing' ? 'redColor' : order.orderStatus == 'Shipped' ? 'orange' : 'greenColor'} ><b className='text-capitalize'>{order.orderStatus}</b>
+                                   <p className={order.orderStatus === 'processing' ? 'redColor' : order.orderStatus === 'Shipped' ? 'orange' : 'greenColor'} ><b className='text-capitalize'>{order.orderStatus}</b>
                                    </p>
 
 
@@ -144,7 +144,7 @@ const Proccessorder = () => {
                     </div>
 
 
-                    <button onClick={() => updateBtnCliked(order._id)} className="btn btn-primary btn-block">
+                    <button disabled={updateLoading ? true : false} onClick={() => updateBtnCliked(order._id)} className="btn btn-primary btn-block">
                          Update Status
                     </button>
                </div>

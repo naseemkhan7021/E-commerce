@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { CardCvcElement, CardExpiryElement, CardNumberElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useAlert } from 'react-alert';
 import { useNavigate } from 'react-router-dom';
@@ -69,7 +69,7 @@ const PaymentProcess = () => {
                     alert.error(result.error.message)
                     payBtn.disabled = false;
                } else {
-                    if (result.paymentIntent.status == 'succeeded') {
+                    if (result.paymentIntent.status === 'succeeded') {
                          // to do 
                          var order;
                          // console.log(orderInfo);
@@ -150,6 +150,7 @@ const PaymentProcess = () => {
                                    type="submit"
                                    className="btn btn-block py-3"
                                    onClick={payButtonCliked}
+                                   disabled={loading ? true : false}
                               >
                                    Pay - {`${orderInfo.totalPrice}`}
                               </button>

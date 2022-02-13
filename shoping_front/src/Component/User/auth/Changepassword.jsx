@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
@@ -15,7 +14,7 @@ const Changepassword = () => {
      const navigat = useNavigate();
      const dispatch = useDispatch();
 
-     const { user } = useSelector((state) => state.auth);
+     // const { user } = useSelector((state) => state.auth);
      const { error, loading, isUpdated } = useSelector((state) => state.user);
 
      useEffect(() => {
@@ -32,7 +31,7 @@ const Changepassword = () => {
                     type: UPDATE_PASSWORD_RESET
                })
           }
-     }, [dispatch, alert, error, isUpdated]);
+     }, [dispatch, alert, error, isUpdated, navigat]);
 
      function submitForm(e) {
           e.preventDefault();
@@ -41,7 +40,7 @@ const Changepassword = () => {
 
      return (
           <>
-               {/* <Metadata title={`Change Password - ${user.name}`} /> */}
+               <Metadata title={`Change Password`} />
                <div className="row wrapper">
                     <div className="col-10 col-lg-5">
                          <form className="shadow-lg" onSubmit={submitForm}>

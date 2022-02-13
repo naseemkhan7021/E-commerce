@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Outlet } from 'react-router-dom';
-import { CURRENCY } from '../../constants/variable';
+import { Outlet } from 'react-router-dom';
 import { clearErrors, showOrdersAction } from '../../redux/action/orderAction';
 
 import Loader from '../Layout/Share/Loader';

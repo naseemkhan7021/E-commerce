@@ -2,9 +2,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Mainrouter from './MainRouter';
 import './App.css';
 import 'rc-slider/assets/index.css';
-import store from './redux/store'
-import { loadUserAction } from './redux/action/userAction';
-import { useEffect } from 'react';
+// import store from './redux/store';
+// import { loadUserAction } from './redux/action/userAction';
+// import { useEffect } from 'react';
 
 // function App() {
 //   return (

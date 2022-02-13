@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
@@ -40,7 +39,7 @@ const UpdateProfile = () => {
                     type: UPDATE_PROFILE_RESET
                })
           }
-     }, [dispatch, alert, error, isUpdated]);
+     }, [dispatch, alert, error, isUpdated, navigat]);
 
      const hendleChange = e => {
           const reader = new FileReader();

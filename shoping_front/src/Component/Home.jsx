@@ -1,6 +1,6 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useMatch, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import Pagination from 'react-js-pagination';
 import Slider from 'rc-slider';
@@ -20,10 +20,10 @@ const Home = () => {
      const [priceFilter, setPriceFilter] = useState([1, 50000]);
      const [category, setCategory] = useState('');
      const [ratings, setRatings] = useState(0);
-     const [seller, setSeller] = useState('');
+     // const [seller, setSeller] = useState('');
 
      const { loading, error, products, totalProductCount, pageDataLen, resPerPage } = useSelector(state => state.products)
-     const location = useLocation();
+     // const location = useLocation();
      const { keyWord } = useParams();
      const alert = useAlert();
      const dispatch = useDispatch()

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useMatch, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import { Carousel } from 'react-bootstrap';
 import { clearErrors, getProductDetails } from '../../redux/action/productAct';
@@ -70,7 +70,7 @@ const Productdetails = () => {
           setQnt(qnt + 1)
      }
      const decreaseQnt = () => {
-          if (qnt == 1) return;
+          if (qnt === 1) return;
           setQnt(qnt - 1)
      }
 
@@ -85,7 +85,7 @@ const Productdetails = () => {
           });
           function showRatings(e) {
                stars.forEach((star, index) => {
-                    if (e.type == 'click') {
+                    if (e.type === 'click') {
                          if (index < this.starValue) {
                               star.classList.add('orange')
                               setUserRating(this.starValue)
@@ -93,14 +93,14 @@ const Productdetails = () => {
                               star.classList.remove('orange')
                          }
                     }
-                    if (e.type == 'mouseover') {
+                    if (e.type === 'mouseover') {
                          if (index < this.starValue) {
                               star.classList.add('yellow')
                          } else {
                               star.classList.remove('yellow')
                          }
                     }
-                    if (e.type == 'mouseout') {
+                    if (e.type === 'mouseout') {
                          star.classList.remove('yellow')
                     }
                })
@@ -159,15 +159,15 @@ const Productdetails = () => {
 
                                              <p id="product_price">{CURRENCY}{product.price}</p>
                                              <div className="stockCounter d-inline">
-                                                  <span className={`${qnt == 1 && 'disabled' || product.stock == 0 && 'disabled'} btn btn-danger minus`} onClick={decreaseQnt}>-</span>
+                                                  <span className={`${(qnt === 1 && 'disabled') || (product.stock === 0 && 'disabled')} btn btn-danger minus`} onClick={decreaseQnt}>-</span>
 
 
-                                                  <input type="number" className="form-control count d-inline" max={product.stock} min={1} value={product.stock == 0 ? 0 : qnt} readOnly />
+                                                  <input type="number" className="form-control count d-inline" max={product.stock} min={1} value={product.stock === 0 ? 0 : qnt} readOnly />
 
 
-                                                  <span className={`${qnt == product.stock && 'disabled' || product.stock == 0 && 'disabled'} btn btn-primary plus`} onClick={increaseQnt}>+</span>
+                                                  <span className={`${(qnt === product.stock && 'disabled') || (product.stock === 0 && 'disabled')} btn btn-primary plus`} onClick={increaseQnt}>+</span>
                                              </div>
-                                             <button type="button" id="cart_btn" onClick={addToCardCliked} className={`btn btn-primary d-inline ml-4 ${product.stock == 0 && 'disabled'}`}>Add to Cart</button>
+                                             <button type="button" id="cart_btn" onClick={addToCardCliked} className={`btn btn-primary d-inline ml-4 ${product.stock === 0 && 'disabled'}`}>Add to Cart</button>
 
 
                                              <hr />
