@@ -1,9 +1,8 @@
 # ShopIT E-commerce Project
 
-
 > Complete E-commerce site built with Node.js, React, Redux, Express, MongoDB
 
-More about this project and course on Udemy. Course Name: [MERN Stack Full Ecommerce Site - Using React, Redux, Node.j](https://www.udemy.com/course/3678044)
+More about this project and course on Udemy. Course Name: [MERN Stack Full Ecommerce Site - Using React, Redux, Node.js](https://www.udemy.com/course/3678044)
 
 
 ### Env Variables
@@ -32,6 +31,8 @@ Run it in the root folder.
 ```
 npm run seeder
 ```
+### Test API
+```use [apiTest](/Shoping-Backend/testAPI.http) file for testing api ``
 
 ### what i learn from this
 - <b style='color:red; text-transform: capitalize;'>set globle error handler</b>
