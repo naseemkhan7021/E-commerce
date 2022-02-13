@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "engines": {
-    "node": "14.17.4"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node shoping-backend/server.js",
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon shoping-backend/server",
     "prod": "SET NODE_ENV=PRODUCTION& nodemon shoping-backend/server",
     "seeder": "node shoping-backend/utils/seeders/product && node shoping-backend/utils/seeders/user",
