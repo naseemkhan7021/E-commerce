@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ADMIN_UPDATE_USER_RESET } from '../../../constants/user_Ctn';
 import { updateuserAction, userDetailsAction } from '../../../redux/action/admin/user';
+import { clearErrors } from '../../../redux/action/userAction';
 import Loader from '../../Layout/Share/Loader';
 
 const Editeuser = () => {
