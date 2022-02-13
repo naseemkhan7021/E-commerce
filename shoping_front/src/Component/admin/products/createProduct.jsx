@@ -36,7 +36,7 @@ const Createproduct = () => {
                dispatch(clearErrors());
           }
 
-     }, [dispatch, alert, error, success, navigate])
+     }, [dispatch, alert, error, success, navigat])
 
      const onInputChange = name => e => {
           switch (name) {
