@@ -11,7 +11,7 @@ process.on('uncaughtException', err => {
 // setting up config files 
 if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
 // require('dotenv').config({ path: 'shoping-backend/config/config.env' });
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 // Database conection
 connectToDatabase();
