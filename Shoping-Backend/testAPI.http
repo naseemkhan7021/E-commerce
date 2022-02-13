@@ -1,0 +1,311 @@
+@baseUrl = http://localhost:8080
+@backendUrl = /api/v1
+# produce id 
+ @p_id = 620673aa72623daf88e5736d
+# review id 
+ @r_id = 61eeb8291c6dfe7b34dde42b
+# user id 
+ @u_id = 61ed6109f2d57b2a51412b35
+#  order id 
+@o_id = 	620797b9d177f19888ff9c52
+GET {{baseUrl}}/ HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+###
+// show all products ?keyword=ThinkCentre&category=Electronics&price[gt]=1000&price[lt]=15000&page=1
+GET {{baseUrl}}{{backendUrl}}/products?page=1&keyword=&price[gt]=1&price[lt]=122000 HTTP/1.1
+# GET {{baseUrl}}{{backendUrl}}/products?page=1&keyword=&seller[$in][user1,user2,user3] HTTP/1.1
+# Content-Type: application/json
+# Accept: application/json
+
+###
+# show single product by id 
+GET {{baseUrl}}{{backendUrl}}/product/{{p_id}} HTTP/1.1
+
+
+###   --> adimn
+POST {{baseUrl}}{{backendUrl}}/admin/product/new HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+          "name": "boAt Watch Matrix with 1.65” AMOLED Display, Always On Mode, Slim Premium Design, Heart Rate & SpO2 Monitoring, Health Ecosystem & Multiple Sports Modes & 3ATM Water Resistance(Pitch Black)",
+          "price": "929.00",
+          "description": "(1) 1.65 inches AMOLED display with a square dial features a complete capacitive touch experience, to let you take control effortlessly. \n (2) The Always On Mode display lets you see the home screen without using the wake gesture every time. \n (3) The 3ATM Dust, Splash and Sweat Resistance lets you take your watch wherever you go without worrying about the weather.",
+         "rating": "0",
+          "images": [
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "https://m.media-amazon.com/images/I/71wG2cYA+HL._SX522_.jpg"
+               },
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "https://m.media-amazon.com/images/I/61nhEJTszrL._SX522_.jpg"
+               },
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "https://m.media-amazon.com/images/I/51SkljlZcHL._SX522_.jpg"
+               },
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "https://m.media-amazon.com/images/I/61LJSC5BmjL._SX522_.jpg"
+               },
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "https://m.media-amazon.com/images/I/61PAU11+FNL._SX522_.jpg"
+               },
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "tps://m.media-amazon.com/images/I/71LH5aDVUaL._SX522_.jpg"
+               }
+          ],
+          "category": "Electronics",
+          "seller": "DELL",
+          "stock": "0",
+          "numberOfReviews": "0",
+          "reviews": []
+}
+
+///  // watch
+///  // watch
+///  // watch
+///  // watch
+///  // watch
+/// ht // watch
+###
+# update single product by p_id  --> adimn
+PUT {{baseUrl}}{{backendUrl}}/admin/product/{{p_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+          "name": "test update 2",
+         // "price": "13799.00",
+          //"description": "(1) This Renewed product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum six month seller warranty; box may be generic \n (2) Memory & Storage: 8 GB RAM with Intel HD Graphics 2000|Hard Drive: 500 GB HDD \n (3) Operating System: Windows| Preinstalled Software: MS Office| In the box: Desktop, Cord",
+          //"rating": "638",
+          "images": [
+              {
+                   "public_id": "4648989s8d4f64sd6f4s8d4",
+                   "url": "https://m.media-amazon.com/images/I/71wG2cYA+HL._SX522_.jpg"
+               },
+               {
+                    "public_id": "4648989s8d4f64sd6f4s8d4",
+                    "url": "https://m.media-amazon.com/images/I/61nhEJTszrL._SX522_.jpg"
+              }
+          //     {
+          //          "public_id": "4648989s8d4f64sd6f4s8d4",
+          //          "url": "https://m.media-amazon.com/images/I/51SkljlZcHL._SX522_.jpg"
+          //     },
+          //     {
+          //          "public_id": "4648989s8d4f64sd6f4s8d4",
+          //          "url": "https://m.media-amazon.com/images/I/61LJSC5BmjL._SX522_.jpg"
+          //     },
+          //     {
+          //          "public_id": "4648989s8d4f64sd6f4s8d4",
+          //          "url": "https://m.media-amazon.com/images/I/61PAU11+FNL._SX522_.jpg"
+          //     },
+          //     {
+          //          "public_id": "4648989s8d4f64sd6f4s8d4",
+          //          "url": "https://m.media-amazon.com/images/I/71LH5aDVUaL._SX522_.jpg"
+          //     }
+          ]
+          //"category": "Leptop",
+          //"selller": "Dell",
+          //"stock": "10000",
+          //"numberOfReviews": "284",
+          //"reviews": []
+}
+####
+# add product reviews --> /api/v1/review
+PUT {{baseUrl}}{{backendUrl}}/review HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "productId":"61ed029765c90a27ef3b9294",
+     "rating": 5,
+     "comment": "this is Good !!!"
+}
+
+### 
+# show all single product reviews ==> /api/v1/reviews
+GET {{baseUrl}}{{backendUrl}}/reviews?id={{p_id}} HTTP/1.1
+
+### 
+# Delete review => /api/v1/review?productId=65s4d6f4s56&reviewId=s6d54f65s4df
+DELETE {{baseUrl}}{{backendUrl}}/review?productId={{p_id}}&reviewId={{r_id}}
+
+###
+# delete single product by id  --> adimn
+DELETE {{baseUrl}}{{backendUrl}}/admin/product/{{p_id}} HTTP/1.1
+
+
+
+######## user ########
+#register new user
+POST {{baseUrl}}{{backendUrl}}/register HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "name":"Naseem1",
+     "email":"Naseem1@gmail.com",
+     "password":"12345",
+     "avtar": {
+
+               "public_id": "4648989s8d4f64sd6f4s8d4",
+               "url": "result.secure_url"
+          }
+}
+
+###
+#login user
+POST {{baseUrl}}{{backendUrl}}/login HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "email":"NaseemKhan@gmail.com",
+     "password":"123456789"
+}
+
+
+###
+#logout user
+GET {{baseUrl}}{{backendUrl}}/logout HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+###
+#forgot password user
+GET {{baseUrl}}{{backendUrl}}/password/forgot HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "email":"naseemkhan@gmail.com"
+}
+
+###
+#reset password user
+PATCH {{baseUrl}}{{backendUrl}}/password/reset/88fa2eaa036dfa4eee90738b9e7638645ee2298c HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "password":"123456",
+     "confirmPassword":"123456"
+}
+
+###
+#getuser profile => /api/v1/me
+GET {{baseUrl}}{{backendUrl}}/me HTTP/1.1
+
+###
+#update password => /api/v1/password/update
+PATCH {{baseUrl}}{{backendUrl}}/password/update HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "oldPassword":"12",
+     "newPassword":"123456789"
+}
+
+###
+# update user profile => api/v1/me/udpate
+PUT {{baseUrl}}{{backendUrl}}/me/update HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "email":"NaseemKhan@gmail.com"
+}
+
+###
+# show all users => /api/v1/admin/users
+GET {{baseUrl}}{{backendUrl}}/admin/users HTTP/1.1
+
+
+###
+// get all products => /api/v1/admin/products
+GET {{baseUrl}}{{backendUrl}}/admin/products HTTP/1.1
+
+
+###
+# update user by admin == /api/v1/admin/user/:u_id
+PUT {{baseUrl}}{{backendUrl}}/admin/user/{{u_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json'
+
+{
+     "name":"Naseem khan"
+}
+
+###
+# GET user by Id ADMIN == /api/v1/admin/user/:u_id
+GET  {{baseUrl}}{{backendUrl}}/admin/user/{{u_id}} HTTP/1.1
+
+###
+# Delete user by admin == /api/v1/admin/user/:u_id
+DELETE  {{baseUrl}}{{backendUrl}}/admin/user/{{u_id}} HTTP/1.1
+
+##### order #####
+### new order ==> /api/v1/order/new
+POST {{baseUrl}}{{backendUrl}}/order/new HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "shippingInfo":{
+          "address":"Andheri Gally, New Ground",
+          "city":"Mumbai",
+          "phoneNo":"15648975",
+          "postalCode":"400015",
+          "country":"U.S"
+     },
+     "orderItems":[
+          {
+               "name": "HanMade pip",
+               "quantity": "2",
+               "image": "https://m.media-amazon.com/images/I/41lWTNCKJqL.jpg",
+               "price": "12799",
+               "product": "61ee7412911384b4e24fec73"
+          }
+     ],
+     "paymentInfo": {
+          "id": "sd6f46s54df64s6df6s4df64sdfs",
+          "status": "succeeded"
+     },
+     "itemsPrice": "25598",
+     "taxPrice": "12",
+     "shippingPrice": "13",
+     "totalPrice": "25623"
+}
+
+###
+// GET sing order ==> /api/v1/order/:o_id
+GET {{baseUrl}}{{backendUrl}}/order/{{o_id}} HTTP/1.1
+
+###
+// get all order by user ==> /api/v1/orders/my
+GET {{baseUrl}}{{backendUrl}}/orders/my
+
+###
+// GET all order list admin route ==> /api/v1/admin/orders
+GET {{baseUrl}}{{backendUrl}}/admin/orders HTTP/1.1
+
+###
+// Update / process order ADMIN ==> /api/v1/admin/order/:o_id
+PATCH {{baseUrl}}{{backendUrl}}/admin/order/{{o_id}} HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+     "status":"Delivered"
+}
+
+###
+// delete sing order ==> /api/v1/admin/order/:o_id
+DELETE {{baseUrl}}{{backendUrl}}/admin/order/61ee613e1e9a94d6aa742718 HTTP/1.1

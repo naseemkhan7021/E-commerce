@@ -1,0 +1,29 @@
+/node_modules/
+/shoping_front/node_modules/
+/shoping_front/build
+# /shoping-Backend/config.env
+*.env
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+.env
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+/shoping_front/.env.local
+/shoping_front/.env.development.local
+/shoping_front/.env.test.local
+/shoping_front/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
