@@ -3,7 +3,7 @@ const app = express();
 
 const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const path = require('path');
 const cookieParser = require("cookie-parser");
 const cors = require('cors');
@@ -11,8 +11,8 @@ const morgan = require('morgan');
 const errorMiddleware = require('./middlewares/errors/errors');
 
 // setting up config files 
-// if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
-dotenv.config({ path: 'Shoping-Backend/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+// dotenv.config({ path: 'Shoping-Backend/config/config.env' });
 // require('dotenv').config();
 
 
@@ -55,13 +55,13 @@ app.use(`${bassurl}/payment`, paymentRoute)
 
 
 // add front static files
-if (process.env.NODE_ENV === 'PRODUCTION') {
-     app.use(express.static(path.join(__dirname, '../shoping_front/build')));
+// if (process.env.NODE_ENV === 'PRODUCTION') {
+app.use(express.static(path.join(__dirname, '../shoping_front/build')));
 
-     app.get('*', (req, res) => {
-          res.sendFile(path.resolve(__dirname, '../shoping_front/build/index.html'))
-     })
-}
+app.get('*', (req, res) => {
+     res.sendFile(path.resolve(__dirname, '../shoping_front/build/index.html'))
+})
+// }
 
 // error middlewares
 app.use(errorMiddleware)
