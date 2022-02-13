@@ -10,7 +10,8 @@ const morgan = require('morgan');
 const errorMiddleware = require('./middlewares/errors/errors');
 
 // setting up config files 
-require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
