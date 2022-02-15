@@ -53,7 +53,6 @@ const UpdateProfile = () => {
      }
 
      function submitForm(e) {
-          console.log('submit');
           e.preventDefault();
           const formData = new FormData();
           formData.set('name', name);

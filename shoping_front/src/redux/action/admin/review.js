@@ -2,7 +2,6 @@ import { deleteProductReviewAPI, getProductReviewsAPI } from "../../../api/admin
 import { DELETE_PRODUCT_REVIEW_FAIL, DELETE_PRODUCT_REVIEW_REQUEST, DELETE_PRODUCT_REVIEW_SUCCESS, PRODUCT_REVIEWS_FAIL, PRODUCT_REVIEWS_REQUEST, PRODUCT_REVIEWS_SUCCESS } from "../../../constants/product_Ctn";
 
 export const getProductReviewsAction = (p_id) => async (dispatch) => {
-     console.log('click');
      try {
           dispatch({
                type: PRODUCT_REVIEWS_REQUEST

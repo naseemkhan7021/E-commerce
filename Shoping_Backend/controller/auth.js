@@ -10,7 +10,6 @@ const crypto = require("crypto");
 const cloudinary = require('cloudinary');
 // get user from params u_id (user_id) => :u_id
 exports.getUserByParamsId = (req, res, next, id) => {
-     // console.log(id);
      User_model.findById(id)
           // populate followers and following user array
           .exec((err, user) => {
@@ -28,7 +27,6 @@ exports.getUserByParamsId = (req, res, next, id) => {
 
 //POST register new user /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-     // console.log('body -> ', req.body);
      const result = await cloudinary.v2.uploader.upload(req.body.avtar, {
           folder: 'avatars',
           width: 150,
@@ -47,14 +45,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
           }
      })
      sendToken(user, 200, res)
-     // User_model.create(data)
-     // .then(result=>{
-     //      console.log(result);
-     //      const token = result.getJwtToken();
-     //      return res.status(200).json({success: true,result,token})
-     // }).catch(error=>{
-     //      return next(new ErrorHandller(error.message,402))
-     // }); // catch error handle by globle error hanler middlewares/error/error.js
+
 });
 
 
@@ -71,33 +62,17 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
      }
      // check if password is correct or not
      const isPassword = await user.comparePassword(password);
-     // console.log(isPassword,password);
      if (!isPassword) {
           return next(new ErrorHandller('User with this email or password not found!!', 401))
      }
      // const token = user.getJwtToken();
      // return res.status(200).json({ success: true, token, user });
      sendToken(user, 200, res);
-
-
-     // User_model.findOne({ email }, async (error, user) => {
-     //      if (error || !user || await !user.comparePassword(password)) {
-     //           return next(new ErrorHandller('User with this email or password not found!!1', 401))
-     //      };
-     //      // const isPassword = await user.comparePassword(password);
-     //      // // console.log(isPassword,password);
-     //      // if (!isPassword) {
-     //      //      return next(new ErrorHandller('User with this email or password not found!!1', 401))
-     //      // }
-     //      const token = user.getJwtToken();
-     //      return res.status(201).json({ success: true, token, user })
-     // }).select('+password')
 });
 
 
 // Forgot password => /api/v1/password/forgot
 exports.sendPasswordResetToken = catchAsyncErrors((req, res, next) => {
-     console.log('body -> ', req.body);
      const { email } = req.body;
      if (!email) {
           return next(new ErrorHandller('Enter your email !!!', 401))
@@ -106,7 +81,6 @@ exports.sendPasswordResetToken = catchAsyncErrors((req, res, next) => {
           if (error || !user) {
                return next(new ErrorHandller('User with this email not found!!', 404))
           }
-          // console.log(user);
           // Get reset token
           const resetToken = user.getResetPasswordToken();
           user.save({ validateBeforeSave: false }); // optional
@@ -149,7 +123,6 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
                resetPasswordExpire: { $gt: Date.now() }
           }, (error, user) => {
                if (error || !user) {
-                    console.log(error);
                     return next(new ErrorHandller('Password reset token is invalid or has been expired !!', 400))
                }
                if (req.body.password !== req.body.confirmPassword) {
@@ -161,32 +134,11 @@ exports.resetPassword = catchAsyncErrors(async (req, res, next) => {
                user.resetPasswordExpire = undefined;
                user.save((error, result) => {
                     if (error) {
-                         // console.log('error ->', error);
                          return next(new ErrorHandller('You password must be longer then 6 characters', 401))
                     }
                     sendToken(result, 200, res)
                });
           });
-
-          // .exec((error, user) => {
-          //      if (error || !user) {
-          //           console.log(error);
-          //           return next(new ErrorHandller('Password reset token is invalid or has been expired !!', 400))
-          //      }
-          //      if (req.body.password !== req.body.confirmPassword) {
-          //           return next(new ErrorHandller('Password does not match !!', 400))
-          //      }
-          //      // setup new password
-          //      user.password = req.body.password;
-          //      user.resetPasswordToken = undefined;
-          //      user.resetPasswordExpire = undefined;
-          //      user.save().then(result => {
-          //           sendToken(result, 200, res)
-          //      }).catch(error => {
-          //           console.log('error ->',error);
-          //           return next(new ErrorHandller(error, 401))
-          //      })
-          // });
 
      } else {
           return next(new ErrorHandller('Please provide token !!!'))
@@ -242,7 +194,6 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
 //PUT update user profile => /api/v1/me/update
 exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
-     // console.log('body 1 -> ', req.body);
      let updateUserData = {
           name: req.body.name,
           email: req.body.email,
@@ -251,9 +202,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
           const user = await User_model.findById(req.user.id)
           if (user.avtar.public_id) {
                const img_id = user.avtar.public_id
-               // console.log('img id -> ', img_id);
                let res = await cloudinary.v2.uploader.destroy(img_id);
-               // console.log('res -> ', res);
                const result = await cloudinary.v2.uploader.upload(req.body.avtar, {
                     folder: 'avatars',
                     width: 150,
@@ -266,7 +215,6 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
 
           };
      }
-     // console.log('upudata 2 -> ', updateUserData);
 
      const user = await User_model.findByIdAndUpdate(req.user.id, updateUserData, {
           new: true,

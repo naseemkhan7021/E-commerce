@@ -57,7 +57,6 @@ const Mainrouter = () => {
                const { data } = await getStripKeyAPI();
 
                setStripeApi(data.stripe_key);
-               // console.log((data));
           } catch (error) {
                alert.error(error.response.data.message)
           }

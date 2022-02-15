@@ -12,8 +12,6 @@ module.exports = class APIfeatures {
                     $options: 'i' // case insansitive 's' -> sansitive
                }
           } : {};
-          // console.log('keyword -> ',keyword);
-          // console.log('query -> ',this.query);
           this.query = this.query.find({ ...keyword },);
           return this;
      }
@@ -23,13 +21,11 @@ module.exports = class APIfeatures {
           // remove fields from the query 
           const removeFields = ['keyword', 'limit', 'page'];
           removeFields.forEach(element => delete queryCopy[element]);
-          // console.log('queryCopy -> ',queryCopy); // look change
 
           // Advance filter for price, rating etc. 
           let queryStr = JSON.stringify(queryCopy);
           queryStr = queryStr.replace(/(gt|gte|lt|lte)/g, match => `$${match}`) // make $gt,$gte,$lt,$lte for mogo search
 
-          console.log('queryStr -> ', queryStr); // look change
 
           this.query = this.query.find(JSON.parse(queryStr));
           return this;
@@ -37,8 +33,6 @@ module.exports = class APIfeatures {
      pagination(resParPage) {
           const currentPage = Number(this.queryStr.page) || 1;
           const skip = resParPage * (currentPage - 1);
-
-          // console.log('this.query.length -> ', this.query);
 
           this.query = this.query.limit(resParPage).skip(skip);
           return this;

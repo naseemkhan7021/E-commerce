@@ -49,8 +49,6 @@ exports.showAllProducts = catchAsyncErrors(async (req, res, next) => {
                outOfStockProducts += 1
           }
      })
-
-     // console.log('stock ', outOfStockProducts);
      res.status(200).json({
           success: true,
           totalProducts: products.length,
@@ -73,11 +71,9 @@ exports.showproducts = catchAsyncErrors(async (req, res, next) => {
      let products = await apiFeatures.query;
      let pageDataLen = products.length;
 
-     console.log('products.length -> ', products.length);
 
      // apiFeatures.pagination(resPerPage);
      // products = await apiFeatures.query;
-     // console.log('pageDataLen2 -> ', pageDataLen2);
 
      // setTimeout(() => {
      return res.status(200).json({
@@ -121,7 +117,6 @@ exports.showSingleProduct = catchAsyncErrors((req, res, next) => {
 
 //PUTCH update single product by id ==> /api/v1/admin/product/:p_id --> product_id
 exports.updateSingleProduct = catchAsyncErrors(async (req, res, next) => {
-     // console.log('body ', req.body);
      if (!req.body) {
           // return res.status(204).json({ success: false, message: 'Please provide some more details !!!' })
           return next(new ErrorHandller('Please provide details !!!', 402)); // come from utils folder globle error handel
@@ -136,8 +131,7 @@ exports.updateSingleProduct = catchAsyncErrors(async (req, res, next) => {
      if (req.body.images !== undefined) {
           const product = await Product_model.findById(req.params.p_id);
           for (let index = 0; index < product.images.length; index++) {
-               const result = await cloudinary.v2.uploader.destroy(product.images[index].public_id)
-               console.log('cloudinary result -> ', result);
+               const result = await cloudinary.v2.uploader.destroy(product.images[index].public_id);
           }
 
           let imgLinks = [];
@@ -174,8 +168,7 @@ exports.deleteSingleProduct = catchAsyncErrors(async (req, res, next) => {
                return next(new ErrorHandller('Unable to perporm action or Product not found', 404)); // come from utils folder globle error handel
           }
           for (let index = 0; index < product.images.length; index++) {
-               const result = await cloudinary.v2.uploader.destroy(product.images[index].public_id)
-               console.log('cloudinary result -> ', result);
+               const result = await cloudinary.v2.uploader.destroy(product.images[index].public_id);
 
           }
 
@@ -210,7 +203,6 @@ exports.addOrUpdateReview = catchAsyncErrors(async (req, res, next) => {
           rating: Number(req.body.rating),
           comment: req.body.comment
      };
-     console.log('review -> ', review);
      const product = await Product_model.findById(req.body.productId);
      const isReview = product.reviews.find(r => r.user.toString() === req.user.id.toString())
 

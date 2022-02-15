@@ -9,7 +9,6 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
 
      req.body.paidAt = Date.now();
      req.body.user = req.user.id; // add user in body
-     // console.log(req.body);
      const order = await order_Model.create(req.body);
      if (!order) {
           return next(new ErrorHandller('Order Not place  becouse some error!!!', 501))
@@ -28,9 +27,7 @@ exports.singleOrder = catchAsyncErrors(async (req, res, next) => {
 
 //GET all orders by user id ==> /api/v1/order/my
 exports.myOrders = catchAsyncErrors(async (req, res, next) => {
-     // console.log('this is my order ');
      const orders = await order_Model.find({ user: req.user.id }).populate('user');
-     // console.log('orders -> ', orders);
      if (!orders) {
           return next(new ErrorHandller('Order not found !!!', 404));
      }
@@ -74,7 +71,6 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
 //PATCH  update order helper for update stack 
 function updateStack(id, quantity) {
      // $inc user increament of '-' for decreases 
-     console.log('stock here');
      Product_model.findByIdAndUpdate(id, { $inc: { stock: -quantity } }, (error, result) => {
           if (error || !result) {
                return next(new ErrorHandller('Stack not update', 400));

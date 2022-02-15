@@ -33,7 +33,6 @@ const Productdetails = () => {
      // }, [input]);
      // let id;
      useEffect(() => {
-          console.log('this is useEffect from product Details');
 
           dispatch(getProductDetails(p_id));
           if (success) {

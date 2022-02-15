@@ -6,7 +6,7 @@ const dotenv = require('dotenv')
 // handle Uncaught exceptions Error (undefind verialbe or values)
 process.on('uncaughtException', err => {
      console.log(`ERROR NAME: ${err.name} -> ERROR: ${err.stack}`);
-     console.log('Shutting down the server due to Uncaught exceptions (undefind verialbe)');
+
      process.exit(1);
 });
 

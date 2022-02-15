@@ -50,7 +50,6 @@ const Createproduct = () => {
                          reader.onload = () => {
                               if (reader.readyState === 2) {
                                    // setAvtarPreview(reader.result);
-                                   console.log('reader');
                                    setImages(oldImg => [...oldImg, reader.result])
                                    // (reader.result);
                               }
@@ -84,7 +83,6 @@ const Createproduct = () => {
 
      const submitForm = (e) => {
           e.preventDefault();
-          console.log('come 1');
           const formData = new FormData();
           formData.set('name', name)
           formData.set('price', price)
@@ -92,13 +90,10 @@ const Createproduct = () => {
           formData.set('category', category)
           formData.set('seller', seller)
           formData.set('stock', stock)
-          console.log('come 2');
           images.forEach(image => {
                formData.append('images', image)
           });
-          console.log('come 3');
           dispatch(creatNewProductAction(formData))
-          console.log('come 4');
      }
 
      return (

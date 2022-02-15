@@ -2,7 +2,6 @@ const ErrorHandller = require('../../utils/handleError/errorHandller');
 module.exports = (err, req, res, next) => {
      err.statusCode = err.statusCode || 500;
      // err.message = err.message || 'Internal Server Error !!!';
-     console.log('error stack ->', err.stack);
 
      if (process.env.NODE_ENV === 'PRODUCTION') {
 

@@ -6,7 +6,6 @@ export const createOrderAPI = async (orderData) => {
      const headers = {
           'Content-Type': 'application/json'
      }
-     // console.log('orderData -> ', orderData);
      return await axios({
           baseURL: link,
           url: `/new`,
