@@ -112,7 +112,7 @@ exports.sendPasswordResetToken = catchAsyncErrors((req, res, next) => {
           user.save({ validateBeforeSave: false }); // optional
           // create reset url
           // const resetUrl = `${req.protocol}://${req.get('host')}${process.env.BASS_URL}/password/reset/${resetToken}`;
-          const resetUrl = `${req.protocol}://${req.get('host')}/auth/password/reset/${resetToken}`;
+          const resetUrl = process.env.NODE_ENV === 'PRODUCTION' ? `${req.protocol}://${req.get('host')}/auth/password/reset/${resetToken}` : `${process.env.FRONT_URI}/auth/password/reset/${resetToken}`;
           // const resetUrl = `${process.env.FRONT_URI}/auth/password/reset/${resetToken}`;
           // create message for email
           const message = `Your password reset token is follow:\n\n\n ${resetUrl}\n\n\n If you have not requisted the email then ignore it.`;

@@ -11,6 +11,9 @@ import { ADMIN_DELETE_USER_RESET } from '../../../constants/user_Ctn';
 const Allusers = () => {
      const { loading, error, users } = useSelector(state => state.allusers)
      const { loading: deleteLoading, error: deleteError, success } = useSelector(state => state.udUser)
+     const { user = {} } = useSelector(state => state.auth)
+     const { _id: u_id } = user
+
      const alert = useAlert();
      const dispatch = useDispatch()
 
@@ -91,9 +94,14 @@ const Allusers = () => {
                          <Link to={`/admin/user/${user._id}`} className='btn btn-primary py-1 px-2'>
                               <i className='fa fa-eye'></i>
                          </Link>
-                         <button disabled={deleteLoading ? true : false} onClick={() => deleteBtnClicked(user._id)} className='btn btn-danger py-1 px-2 ml-1' >
-                              <i className='fa fa-trash'></i>
-                         </button>
+                         {
+                              u_id && u_id !== user._id && (
+
+                                   <button disabled={deleteLoading ? true : false} onClick={() => deleteBtnClicked(user._id)} className='btn btn-danger py-1 px-2 ml-1' >
+                                        <i className='fa fa-trash'></i>
+                                   </button>
+                              )
+                         }
                     </div>
                })
           });

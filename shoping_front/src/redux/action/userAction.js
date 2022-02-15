@@ -48,7 +48,7 @@ export const registerAction = (userData) => async (dispatch) => {
           dispatch({ type: REGISTER_REQUEST })
           // console.log('this is register', userData);
           const { data } = await registerApi(userData);
-          console.log('user data -> ', data);
+          // console.log('user data -> ', data);
           dispatch({
                type: REGISTER_SUCCESS,
                payload: data.user
