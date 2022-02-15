@@ -11,8 +11,8 @@ const morgan = require('morgan');
 const errorMiddleware = require('./middlewares/errors/errors');
 
 // setting up config files 
-// if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoping-backend/config/config.env' });
-require('dotenv').config({ path: 'Shoping-Backend/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'shoipng-backend/config/config.env' });
+// require('dotenv').config({ path: 'Shoping-Backend/config/config.env' });
 // require('dotenv').config();
 
 
