@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon shoping-backend/server",
-    "prod": "SET NODE_ENV=PRODUCTION& nodemon shoping-backend/server",
-    "seeder": "node shoping-backend/utils/seeders/product && node shoping-backend/utils/seeders/user",
+    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon Shoping_Backend/server",
+    "prod": "SET NODE_ENV=PRODUCTION& nodemon Shoping_Backend/server",
+    "seeder": "node Shoping_Backend/utils/seeders/product && node Shoping_Backend/utils/seeders/user",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix shoping_front && npm run build --prefix shoping_front"
   },
   "keywords": [],

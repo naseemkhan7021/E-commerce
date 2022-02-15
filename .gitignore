@@ -1,7 +1,7 @@
 /node_modules/
 /shoping_front/node_modules/
 /shoping_front/build
-# /shoping-Backend/config.env
+# /Shoping_Backend/config.env
 *.env
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.

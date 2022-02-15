@@ -32,7 +32,7 @@ Run it in the root folder.
 npm run seeder
 ```
 ### Test API
-```use [apiTest](/Shoping-Backend/testAPI.http) file for testing api ``
+```use [apiTest](/Shoping_Backend/testAPI.http) file for testing api ``
 
 ### what i learn from this
 - <b style='color:red; text-transform: capitalize;'>set globle error handler</b>

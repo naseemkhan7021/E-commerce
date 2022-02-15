@@ -1,4 +1,4 @@
-require('dotenv').config({ path: 'shoping-backend/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'Shoping_Backend/config/config.env' });
 const connectToDatabase = require('../../config/database');
 const users = require('../../data/users.json');
 const user = require('../../model/user');
