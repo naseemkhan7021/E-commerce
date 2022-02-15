@@ -1,6 +1,7 @@
 const app = require('./app');
 const connectToDatabase = require('./config/database');
 const cloudinary = require('cloudinary');
+const dotenv = require('dotenv')
 
 // handle Uncaught exceptions Error (undefind verialbe or values)
 process.on('uncaughtException', err => {
@@ -8,8 +9,12 @@ process.on('uncaughtException', err => {
      console.log('Shutting down the server due to Uncaught exceptions (undefind verialbe)');
      process.exit(1);
 });
+
 // setting up config files 
-if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'Shoping_Backend/config/config.env' });
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+     dotenv.config({ path: 'Shoping_Backend/config/config.env' });
+} else dotenv.config();
+
 // require('dotenv').config({ path: 'Shoping_Backend/config/config.env' });
 const PORT = process.env.PORT || 8080;
 

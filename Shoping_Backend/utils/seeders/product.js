@@ -1,8 +1,12 @@
-if (process.env.NODE_ENV !== 'PRODUCTION') require('dotenv').config({ path: 'Shoping_Backend/config/config.env' });
+const dotenv = require('dotenv');
 const connectToDatabase = require('../../config/database');
 const products = require('../../data/products.json');
 const Product = require('../../model/product');
 
+//
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+     dotenv.config({ path: 'Shoping_Backend/config/config.env' });
+} else dotenv.config();
 
 // Database conection
 connectToDatabase();
