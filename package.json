@@ -7,7 +7,7 @@
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon Shoping_Backend/server",
     "prod": "SET NODE_ENV=PRODUCTION& nodemon Shoping_Backend/server",
     "seeder": "node Shoping_Backend/utils/seeders/product && node Shoping_Backend/utils/seeders/user",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix shoping_front && npm run build --prefix shoping_front"
+    "heroku-postbuild": "SET NPM_CONFIG_PRODUCTION=false && npm install --prefix shoping_front && npm run build --prefix shoping_front"
   },
   "keywords": [],
   "author": "",
