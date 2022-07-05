@@ -108,14 +108,14 @@ export const logoutAPI = async () => {
 // new user register api
 export const loadUserApi = async () => {
      let link = `/me`
-     let headers = {
-          'Content-Type': 'multipart/form-data'
-     }
+     // let headers = {
+     //      'Content-Type': 'multipart/form-data'
+     // }
      return await axios({
           baseURL: API_PATH,
           url: link,
           method: 'GET',
-          headers
+          // headers
      });
 };
 

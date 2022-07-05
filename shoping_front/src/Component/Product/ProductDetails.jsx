@@ -23,7 +23,12 @@ const Productdetails = () => {
 
      const { loading, error, product } = useSelector(state => state.productDetails)
      const { success, error: reviewError } = useSelector(state => state.addUpdateRiview)
-     const { user } = useSelector(state => state.auth)
+     const { user } = useSelector(state => state.auth);
+     const style = {
+          imgStyle: {
+               maxHeight: '15rem', height: '13rem', objectFit: 'contain'
+          }
+     }
 
      // useEffect(() => {
      //      effect
@@ -133,7 +138,7 @@ const Productdetails = () => {
                                                   {
                                                        product && product.images && product.images.map((img, index) => (
                                                             <Carousel.Item key={`${index}-${img.public_id}`}>
-                                                                 <img src={img.url} alt={`${product.name}-${index}`} className="d-block w-100" />
+                                                                 <img src={img.url} alt={`${product.name}-${index}`} style={style.imgStyle} className="d-block w-100" />
                                                             </Carousel.Item>
                                                        ))
                                                   }

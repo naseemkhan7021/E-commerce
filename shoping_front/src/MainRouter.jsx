@@ -18,6 +18,7 @@ import Shippinginfo from "./Component/card/ShippingInfo";
 import Mysingleorder from "./Component/order/MySingleOrder";
 import Confirmorder from "./Component/order/ConfirmOrder"
 import Ordersuccess from "./Component/order/OrderSuccess"
+import { useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { getStripKeyAPI } from "./api/payment/reqkey";
 import PaymentProcess from "./Component/payment/Paymentprocess";
@@ -35,7 +36,7 @@ import { Elements } from '@stripe/react-stripe-js'
 
 // redux
 import store from "./redux/store";
-import { loadUserAction } from "./redux/action/userAction";
+import { loadUserAction,clearErrors } from "./redux/action/userAction";
 import { loadStripe } from "@stripe/stripe-js";
 import EditeProduct from "./Component/admin/products/EditeProduct";
 import Proccessorder from "./Component/admin/orders/ProccessOrder";
@@ -47,9 +48,14 @@ import Allreviews from "./Component/admin/products/Allreviews";
 const Mainrouter = () => {
      const [stripeApi, setStripeApi] = useState('');
      const alert = useAlert()
+     const { error } = useSelector(state => state.auth);
      useEffect(() => {
-          store.dispatch(loadUserAction())
-          getStripAPIKey()
+          if(error){
+               alert.error(error);
+               store.dispatch(clearErrors());
+          }
+          store.dispatch(loadUserAction());
+          getStripAPIKey();
      }, []);
 
      async function getStripAPIKey() {
@@ -58,7 +64,7 @@ const Mainrouter = () => {
 
                setStripeApi(data.stripe_key);
           } catch (error) {
-               alert.error(error.response.data.message)
+               alert.error(error.response.data.message);
           }
      }
 

@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
+// ProtectedRoute.jsx or PrivetRoute.jsx  --->  react-router-dom v6 👈
 function ProtectedRoute({ Admin, children }) {
      const { loading, isAuthenticated, user } = useSelector(state => state.auth);
 
